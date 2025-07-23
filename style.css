@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+body{
+    background-image: url(./images/bg.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* Alinha horizontalmente */
+    align-items: center;     /* Alinha verticalmente */
+}
+
+section{
+    padding: 30px;
+        
+}
+
+button { 
+    padding: 5px;
+    border-color: purple;
+}
+
+input{
+    padding: 5px;
+    border-color: blue;
+    
+}
+
+input::placeholder{
+    padding: 5px;
+    
+    
+}
