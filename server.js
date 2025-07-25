@@ -53,7 +53,7 @@ app.get("/api/clima", async (req, res) => {
         }
 
         //Retorna os dados formatados em JSON
-        res.json(resultado);
+        res.json(resultado); 
     }catch(erro) {
       //Caso ocorra erro na requisição, envia erro 500 com mensagem
       res.status(500).json({
