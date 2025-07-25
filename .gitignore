@@ -1,0 +1,15 @@
+# Ignora node_modules (pacotes instalados)
+node_modules/
+
+# Ignora o arquivo de variáveis de ambiente
+.env
+
+# Ignora cache do sistema
+.DS_Store
+Thumbs.db
+
+# Ignora pastas temporárias do editor
+.vscode/
+.idea/
+
+

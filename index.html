@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +9,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
+
 <body>
     <section>
-    <!-- Campo de busca -->
-     <input type="text" placeholder="Pesquisar Cidade">
-     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i> </button>
+        <!-- Campo de busca -->
+        <input type="text" id="cityInput" placeholder="City">
+        <button onclick="searchWeather()"><i class="fa-solid fa-magnifying-glass"></i> </button>
     </section>
 
-    <section id="climaAtual">
-    <!-- Clima Atual -->
-     <!-- Icone  -->
-      <!-- 
+    <section id="weatherResult">
+
+        <!-- Clima Atual -->
+        <!-- Icone  -->
+        <!-- 
      temperatura
       descricao
       umidade
@@ -26,14 +29,48 @@
       -->
     </section>
 
-    <section id="previsao">
+    <section id="forecastContainer">
         <!-- Previsão próximos dias -->
 
     </section>
 
-
     <script>
+        app.use(cors({
+            origin: 'http://127.0.0.1:5500'
+        }));
 
+        function searchWeather() {
+            const city = document.getElementById('cityInput').value;
+
+            if (!city) {
+                alert('City not Found');
+                return;
+            }
+
+            const url = `http://localhost:5000/api/clima?cidade=${encodeURIComponent(city)}`;
+
+            fetch(url)
+                .then(res => res.json())
+                .then(dados => {
+                    if (dados.erro) {
+                        document.getElementById('weatherResult').innerHTML = `<p><strong>Erro:</strong> ${dados.erro}</p>`;
+                        return;
+                    }
+
+                    document.getElementById('weatherResult').innerHTML = `
+                        <h2>${dados.cidade}</h2>
+                        <p><strong>Temperatura:</strong> ${dados.temperatura}°C</p>
+                        <p><strong>Condição:</strong> ${dados.descricao}</p>
+                        <p><strong>Umidade:</strong> ${dados.umidade}%</p>
+                        <img src="${dados.icone}" alt="Ícone do clima" />
+                `
+                })
+                .catch(erro => {
+                    console.error('Error Req', erro);
+                    document.getElementById('weatherResult').innerHTML = `<p>Error fetching data.</p> `
+                })
+        }
     </script>
 </body>
+
 </html>
