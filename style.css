@@ -1,44 +1,97 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html{
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+html {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-body{
-    background-image: url(./images/bg.gif);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    display: flex;
-    justify-content: center; /* Alinha horizontalmente */
-    align-items: center;     /* Alinha verticalmente */
+body {
+  background-image: url(./images/bg.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* Alinha horizontalmente */
+  align-items: center; /* Alinha verticalmente */
+  z-index: 2;
 }
 
-section{
-    padding: 30px;
-        
+.background-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* escurece e deixa translúcido */
+  z-index: 1;
 }
 
-button { 
-    padding: 5px;
-    border-color: purple;
+section {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
-input{
-    padding: 5px;
-    border-color: blue;
-    
+.section div {
+  text-align: center;
 }
 
-input::placeholder{
-    padding: 5px;
-    
-    
+button {
+  padding: 5px;
+  border-color: rgba(63, 0, 100, 1);
+  background: white;
+}
+
+input {
+  padding: 5px;
+  border-color: rgba(63, 0, 100, 1);
+}
+
+input::placeholder {
+  padding: 5px;
+  background: white;
+}
+
+#weatherResult {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.4); /* Preto translúcido */
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  font-family:'Courier New', Courier, monospace
+  width: fit-content;
+  margin: 30px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.weather-icon {
+  width: 150px;
+  display: block;
+  margin: 0 auto;
+}
+
+#weatherResult p {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 400;
+  color: white;
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
