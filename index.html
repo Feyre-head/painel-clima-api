@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -14,19 +14,12 @@
     <section>
         <!-- Campo de busca -->
         <input type="text" id="cityInput" placeholder="City">
-        <button onclick="searchWeather()"><i class="fa-solid fa-magnifying-glass"></i> </button>
+        <button onclick="searchWeather()" title="Search"><i class="fa-solid fa-magnifying-glass"></i> </button>
     </section>
 
     <section id="weatherResult">
 
-        <!-- Clima Atual -->
-        <!-- Icone  -->
-        <!-- 
-     temperatura
-      descricao
-      umidade
-      vento 
-      -->
+   
     </section>
 
     <section id="forecastContainer">
@@ -36,7 +29,7 @@
 
     <script>
         app.use(cors({
-            origin: 'http://127.0.0.1:5500'
+            origin: 'http://127.0.0.1:3000'
         }));
 
         function searchWeather() {
@@ -47,7 +40,7 @@
                 return;
             }
 
-            const url = `http://localhost:5000/api/clima?cidade=${encodeURIComponent(city)}`;
+            const url = `http://localhost:3000/api/clima?cidade=${encodeURIComponent(city)}`;
 
             fetch(url)
                 .then(res => res.json())

@@ -12,7 +12,7 @@ require("dotenv").config();
 const app = express();
 
 // Define a porta em que o servidor irá escutar (ex: http://localhost:3000)
-const PORT = 5500;
+const PORT = 3000;
 
 const cors = require('cors');
 app.use(cors());
